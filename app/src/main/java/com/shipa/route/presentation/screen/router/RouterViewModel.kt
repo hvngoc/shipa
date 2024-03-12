@@ -29,6 +29,7 @@ class RouterViewModel(
 
 
     fun loadData() {
+        _data.value = DataResult.Loading
         viewModelScope.launch(Dispatchers.Main + exceptionHandler) {
             routeUseCase.execute(Demo.listDemo, {
                 _data.value = it

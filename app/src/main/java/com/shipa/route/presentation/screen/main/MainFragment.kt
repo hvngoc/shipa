@@ -71,6 +71,9 @@ class MainFragment : Fragment(), KoinComponent, MasterEpoxyBuilder {
                     showContent(error = true)
                     binding.error.text = it.e.message ?: getString(R.string.error_default)
                 }
+                is DataResult.Loading -> {
+                    showContent(loading = true)
+                }
             }
         }
     }
