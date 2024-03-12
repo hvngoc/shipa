@@ -1,7 +1,8 @@
 package com.shipa.route.domain.usecase
 
 import com.shipa.route.domain.model.RealPoint
-import com.shipa.route.lib.TspDynamicProgrammingIterative
+import com.shipa.route.lib.TspDynamicIterative
+import com.shipa.route.lib.TspDynamicRecursive
 import com.shipa.route.util.DistanceUtil
 
 
@@ -31,8 +32,8 @@ class FindBestRouteUseCase : BaseUseCase<List<RealPoint>, List<RealPoint>>() {
             }
         }
 
-        val finder = TspDynamicProgrammingIterative( listParams.size, 0, matrix)
-        val index = finder.tour
+        val finder = TspDynamicIterative(listParams.size, 0, matrix)
+        val index = finder.getTour()
         val result = arrayListOf<RealPoint>()
         index.forEach {
             val item = listParams[it]
